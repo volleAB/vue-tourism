@@ -1,0 +1,135 @@
+@import 'common.scss';
+
+@media only screen and (max-height: 820px), (max-width: 1100px) {
+  body {
+    font-size: 80%;
+  }
+}
+
+$time: .5s;
+
+body {
+  height: 100vh;
+  background-image: url(../images/loader_bg_intro.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.top-bar {
+  position: fixed;
+  width: 100%;
+  .logo {
+    width: 200px;
+    height: 20px;
+    padding: 20px 10px;
+    font-size: .875em;
+    text-align: left;
+    color: #FFF;
+    opacity: .4;
+  }
+  .content-logo {
+    position: absolute;
+    left: 50%;
+    width: 38px;
+    height: 55px;
+    margin-left: -25px;
+    a {
+      display: block;
+      width: 38px;
+      height: 48px;
+      margin-top: 6px;
+      background-image: url(../images/grandtour_logo.png);
+      background-size: 100% 100%;
+    }
+  }
+  .intro {
+    .setting {
+      display: inline-block;
+      margin: 20px 30px 0 0;
+      vertical-align: top;
+      text-align: center;
+      .share-container {
+        border-radius: 0;
+        overflow: hidden;
+        background-color: transparent;
+        .icon-share {
+          transition: all $time;
+        }
+        .share {
+          position: relative;
+          width: 0;
+          height: 26px;
+          background-color: transparent;
+          z-index: 2;
+          transition: all $time;
+          .share-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 26px;
+            border-radius: 20px;
+            background-color: rgba(255,255,255,.1);
+            li {
+              position: relative;
+              font-size: 1.2em;
+              color: #FFF;
+              background-color: transparent;
+              i {
+                line-height: 1.2;
+              }
+            }
+          }
+        }
+      }
+      li {
+        position: relative;
+        float: left;
+        margin-left: 6px;
+        border-radius: 100%;
+        background-color: rgba(255,255,255,.1);
+        cursor: pointer;
+        transition: all $time;
+        &:hover {
+          transform: scale(1.1)
+        }
+        i {
+          display: block;
+          width: 26px;
+          height: 26px;
+          font-size: 1.5em;
+          color: #FFF;
+          line-height: 1.4;
+
+
+        }
+        a {
+          overflow: hidden;
+          display: inline-block;
+          width: 26px;
+          height: 26px;
+          border-radius: 100%;
+          background-color: rgba(255,255,255,.1);
+          font-size: 1.5em;
+          color: #FFF;
+          line-height: 1.4;
+        }
+      }
+    }
+    >a {
+      display: inline-block;
+      width: 84px;
+      height: 84px;
+      margin-right: 30px;
+      background-image: url(../images/st90_en.png);
+      background-size: 100% 100%;
+    }
+  }
+}
+
+.show {
+  width: 0 !important;
+ }
+.iSshow {
+  width: 100px !important;
+}
