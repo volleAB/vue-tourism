@@ -1,5 +1,7 @@
 <template>
-  <h3 style="position: absolute;top: 50%;left: 50%;margin-left: -10px;">this is map</h3>
+  <div class="map">
+    this is map
+  </div>
 </template>
 
 <script>

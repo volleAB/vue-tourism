@@ -13,6 +13,8 @@ body, p, ul, li {
   padding: 0;
   margin: 0;
   list-style: none;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .fl {
@@ -24,5 +26,12 @@ body, p, ul, li {
 }
 
 a {
+  color: #FFF;
   text-decoration: none;
 }
+
+form, h1, h2, h3, input, option, select, table {
+  font-family: "Neue Helvetica W01","Neue Helvetica W10","Neue Helvetica Arabic W20","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+$time: .5s;

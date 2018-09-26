@@ -1,0 +1,100 @@
+@import 'common.scss';
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  .footer-switch {
+    position: relative;
+    bottom: 4px;
+    left: 14px;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+    cursor: pointer;
+    i {
+      font-size: 30px;
+      transition: all $time;
+      &:hover {
+        font-size: 34px;
+      }
+    }
+  }
+  .footer-service {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(0,0,0,.8);
+    transition: all $time ease;
+    z-index: 1;
+    .center {
+      box-sizing: border-box;
+      width: 58.75em;
+      margin: 20px auto;
+      h3 {
+        margin: 0;
+        margin-bottom: 12px;
+        text-align: left;
+        font-weight: 200;
+        font-size: 28px;
+        color: #e3e3e3;
+        letter-spacing: .6px;
+      }
+      .col {
+        position: relative;
+        box-sizing: border-box;
+        float: left;
+        width: 25%;
+        height: 150px;
+        .teaser {
+          position: relative;
+          height: 120px;
+          a {
+            >img {
+              position: absolute;
+              top: 50px;
+              right: 10px;
+              width: 52px;
+              height: 52px;
+            }
+          }
+          .teaser-img {
+            width: 84%;
+            height: 90px;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 100%;
+              transition: all $time;
+            }
+            &:hover img {
+              transform: scale(1.1);
+            }
+          }
+          .title {
+            margin-top: 8px;
+            font-size: 16px;
+            letter-spacing: .6px;
+            text-align: left;
+          }
+        }
+        >a {
+          position: absolute;
+          left: 0;
+          padding-left: 16px;
+          background-image: url(../images/arrow-extern-white.png);
+          background-repeat: no-repeat;
+          background-position: left;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+.block {
+  height: 260px !important;
+}

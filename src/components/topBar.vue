@@ -1,5 +1,5 @@
 <template>
-  <div class="top-bar">
+  <div class="top-bar" :class="{topBarfadeIn: isIn}">
     <div class="logo fl">Grand Tour of Switzerland</div>
     <div class="content-logo">
       <a href="http://grandtour.myswitzerland.com/en/index.html"></a>
@@ -19,14 +19,13 @@
           </li>
           <li>
             <i class="iconfont icon-sound" @click="sound()"></i>
-            <!-- <audio id="music" controls="controls" loop="loop" hidden="true" autoplay="autoplay">
+            <audio id="music" controls="controls" loop="loop" hidden="true" autoplay="autoplay">
               <source src="../../static/bg.mp3" type="audio/mpeg">
-            </audio> -->
+            </audio>
           </li>
           <li><i class="iconfont icon-location"></i></li>
         </ul>
       </div>
-      <a href="https://www.myswitzerland.com/zh-cn/grand-tour-of-switzerland.html"></a>
     </div>
   </div>
 </template>
@@ -48,6 +47,9 @@ export default {
       iSshow: false,
       isPlaying: true
     }
+  },
+  props: {
+    isIn: Boolean
   },
   methods: {
     sound () {
