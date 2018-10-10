@@ -26,10 +26,10 @@
     </div>
     <div class="container">
       <div class="bg-video-wrap">
-        <video loop="" id="bg-video" poster="../assets/images/loader_bg_intro.jpg" preload="auto" style="height: 631px; width: 1121.78px; right: -51px; bottom: 0px;">
+        <!-- <video loop="" id="bg-video" poster="../assets/images/loader_bg_intro.jpg" preload="auto">
           <source src="http://grandtour.myswitzerland.com/en/video/150330_Intro_original_handbreak_h264_2000kb.mp4" type="video/mp4">
           <source src="http://grandtour.myswitzerland.com/en/video/150330_Intro_original_totalVidCon_libtheora_2500kb.ogg" type="video/ogg">
-        </video>
+        </video> -->
       </div>
       <div class="landing-page">
         <div class="loading" :class="{fadeOut: loading}">
@@ -50,7 +50,36 @@
           </div>
         </div>
       </div>
-      <div id="intro"></div>
+      <div id="intro">
+        <div class="content-header">
+          <h1>Where would you like to start?</h1>
+          <ul class="clearfix">
+            <li><a href="#" class="active">Map</a></li>
+            <li><a href="#">Index</a></li>
+          </ul>
+        </div>
+        <div class="content-body">
+          <div id="index-map">
+            <div id="route-wrap">
+              <div id="map-interactive"></div>
+              <div id="map">
+                <div id="illu-schaffausen" class="ill" style="opacity: 0.6;"><img src="../assets/images/illu_schaffausen.png" alt="illu schaffausen"></div>
+                <div id="illu-stmoritz" class="ill" style="opacity: 0.6;"><img src="../assets/images/illu_stmoritz.png" alt="illu stmoritz"></div>
+                <div id="illu-neuchatel" class="ill" style="opacity: 0.6;"><img src="../assets/images/illu_neuchatel.png" alt="illu neuchatel"></div>
+                <div id="illu-lugano" class="ill" style="opacity: 0.6;"><img src="../assets/images/illu_lugano.png" alt="illu lugano"></div>
+                <div id="illu-heidi" class="ill" style="opacity: 0.6;"><img src="../assets/images/illu_heidi.png" alt="illu heidi"></div>
+                <div id="illu-zermatt" class="ill" style="opacity: 0.6;"><img src="../assets/images/illu_zermatt.png" alt="illu zermatt"></div>
+                <div id="illu-grape" class="ill" style="opacity: 0.6;"><img src="../assets/images/illu_grape.png" alt="illu grape"></div>
+                <div id="illu-luzern" class="ill" style="opacity: 0.6;"><img src="../assets/images/illu_luzern.png" alt="illu luzern"></div>
+                <div id="illu-bern" class="ill" style="opacity: 0.6;"><img src="../assets/images/illu_bern.png" alt="illu bern"></div>
+                <img src="../assets/images/swiss_map.png" alt="swiss map" id="swiss-map">
+              </div>
+              <div id="route"></div>
+            </div>
+          </div>
+          <div id="index-list"></div>
+        </div>
+      </div>
     </div>
     <comFooter></comFooter>
   </div>
@@ -58,7 +87,6 @@
 
 <script>
 import comTopBar from '../components/topBar'
-// import comMap from '../components/map'
 import comFooter from '../components/footer'
 import { createLoading } from '../plugins/loading.js'
 
@@ -71,15 +99,16 @@ export default {
     return {
       isIn: false,
       loading: false,
-      clientHeight: '631px',
-      clientWidth: '1300px'
+      defaultWidth: '1122',
+      defaultHeight: '768',
+      clientWidth: Number,
+      clientHeight: Number
     }
   },
   created () {
 
   },
   mounted () {
-    const that = this
     let options = {
       animationTime: '2s',
       divId: 'circle',
@@ -93,22 +122,53 @@ export default {
     }
     createLoading(options)
     let oVideo = document.querySelector('#bg-video')
-    oVideo.loadstart = () => {
-      console.log('loadstart')
-    }
-    oVideo.oncanplay = () => {
-      console.log('oncanplay')
+    // oVideo.loadstart = () => {
+    //   console.log('loadstart')
+    // }
+    setTimeout(() => {
       this.loading = true
       this.isIn = true
-      setTimeout(() => {
-        oVideo.play()
-      }, 2100)
+    }, 2000)
+    // oVideo.oncanplay = () => {
+    //   console.log('oncanplay')
+    //   this.loading = true
+    //   this.isIn = true
+    //   setTimeout(() => {
+    //     oVideo.play()
+    //   }, 2100)
+    // }
+    // that.clientHeight = `${document.documentElement.clientHeight}px`
+    // that.clientWidth = `${document.documentElement.clientWidth}px`
+    this.clientWidth = document.documentElement.clientWidth
+    this.clientHeight = document.documentElement.clientHeight
+    if (this.clientWidth <= this.defaultWidth) {
+      console.log('1')
+      this.clientHeight = document.body.offsetHeight
+      this.clientWidth = this.defaultWidth
+      oVideo.style.width = this.clientWidth + 'px'
+      oVideo.style.height = this.clientHeight + 'px'
+    } else if (this.clientHeight < this.defaultHeight) {
+      console.log('2')
+      oVideo.style.width = this.clientWidth + 'px'
+      oVideo.style.height = this.defaultHeight + 'px'
+      oVideo.style.bottom = -parseInt(this.clientHeight + this.clientWidth / 3) / 8 + 'px'
+      console.log(this.clientWidth + ',' + this.clientHeight)
     }
+
     window.onresize = function () {
-      that.clientHeight = `${document.documentElement.clientHeight}px`
-      that.clientWidth = `${document.documentElement.clientWidth}px`
-      console.log(that.clientHeight)
+      if (this.clientWidth <= this.defaultWidth) {
+        this.clientHeight = document.body.offsetHeight
+        this.clientWidth = this.defaultWidth
+        oVideo.style.width = this.clientWidth + 'px'
+        oVideo.style.height = this.clientHeight + 'px'
+      } else if (this.clientHeight < this.defaultHeight) {
+        oVideo.style.width = this.clientWidth + 'px'
+        oVideo.style.height = this.defaultHeight + 'px'
+        oVideo.style.bottom = -parseInt(this.clientHeight + this.clientWidth / 3) / 8 + 'px'
+        console.log(this.clientWidth + ',' + this.clientHeight)
+      }
     }
-  }
+  },
+  methods: {}
 }
 </script>

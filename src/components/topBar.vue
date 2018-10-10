@@ -19,9 +19,9 @@
           </li>
           <li>
             <i class="iconfont icon-sound" @click="sound()"></i>
-            <audio id="music" controls="controls" loop="loop" hidden="true" autoplay="autoplay">
+            <!-- <audio id="music" controls="controls" loop="loop" hidden="true" autoplay="autoplay">
               <source src="../../static/bg.mp3" type="audio/mpeg">
-            </audio>
+            </audio> -->
           </li>
           <li><i class="iconfont icon-location"></i></li>
         </ul>

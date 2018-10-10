@@ -164,7 +164,11 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
+    //fix
+    background-image: url(../images/loader_bg_intro.jpg);
+    background-size: cover;
     #bg-video {
+      position: relative;
       width: 100%;
       height: 100%;
       top: 0;
@@ -227,6 +231,111 @@ body {
       }
     }
   }
+  #intro {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    .content-header {
+      margin-top: 68px;
+        h1 {
+          margin: 0;
+          font-size: 3.1em;
+          line-height: 1em;
+          text-align: center;
+          color: #FFF;
+          font-weight: 200;
+          letter-spacing: 1px;
+        }
+        ul {
+          position: relative;
+          left: 50%;
+          margin-left: -84px;
+          li {
+            float: left;
+            vertical-align: baseline;
+            a {
+              display: inline-block;
+              width: 40px;
+              height: 16px;
+              padding: 6px 12px;
+              border: 2px solid rgba(255,255,255,0);
+              border-radius: 20px;
+              margin: 10px 10px;
+              color: rgba(255,255,255,.4);
+              &:hover {
+                color: #FFF;
+              }
+            }
+            .active {
+              border: 2px solid rgba(255,255,255,.4);
+              color: #FFF;
+            }
+          }
+        }
+    }
+    .content-body {
+      position: relative;
+      width: 62.375em;
+      height: 43.625em;
+      margin: 0 auto;
+      #route-wrap {
+        position: relative;
+        left: 20px;
+        width: 62.375em;
+        height: 43.625em;
+        #map-interactive {
+          position: absolute;
+        }
+        #map {
+          position: absolute;
+          bottom: 54px;
+          .ill {
+            position: absolute;
+          }
+          #illu-schaffausen {
+            top: 100px;
+            left: 460px;
+          }
+          #illu-stmoritz {
+            top: 242px;
+            left: 660px;
+          }
+          #illu-neuchatel {
+            top: 160px;
+            left: 100px;
+          }
+          #illu-lugano {
+            top: 394px;
+            left: 540px;
+          }
+          #illu-heidi {
+            top: 230px;
+            left: 520px;
+          }
+          #illu-zermatt {
+            top: 400px;
+            left: 220px;
+          }
+          #illu-grape {
+            top: 280px;
+            left: 136px;
+          }
+          #illu-luzern {
+            top: 230px;
+            left: 330px;
+          }
+          #illu-bern {
+            top: 164px;
+            left: 210px;
+          }
+          >img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
 }
 
 #logo-myswitzerland {
@@ -249,11 +358,11 @@ body {
 }
 
 .fadeIn {
-  animation: fadeIn 5.4s 3s ease-in-out 1 !important;
+  animation: fadeIn 6.2s 3.8s ease-in-out 1 !important;
 }
 
 .topBarfadeIn {
-  animation: tabBarfadeIn 1s 8s ease-in-out 1 !important;
+  animation: tabBarfadeIn 1s 9.8s ease-in-out 1 !important;
   animation-fill-mode: forwards !important;
 }
 
