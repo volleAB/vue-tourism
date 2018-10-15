@@ -1,6 +1,10 @@
 <template>
   <div class="index">
     <comTopBar :isIn="isIn"></comTopBar>
+    <ul class="switch clearfix introfadeIn">
+      <li><a href="#" :class="{active: showMap}" @click="showMap = true">Map</a></li>
+      <li><a href="#" :class="{active: !showMap}" @click="showMap = false">Index</a></li>
+    </ul>
     <div id="logo-myswitzerland">
       <a href="https://www.myswitzerland.com/zh-cn/grand-tour-of-switzerland.html"></a>
     </div>
@@ -26,10 +30,10 @@
     </div>
     <div class="container">
       <div class="bg-video-wrap">
-        <!-- <video loop="" id="bg-video" poster="../assets/images/loader_bg_intro.jpg" preload="auto">
+        <video loop="" id="bg-video" poster="../assets/images/loader_bg_intro.jpg" preload="auto">
           <source src="http://grandtour.myswitzerland.com/en/video/150330_Intro_original_handbreak_h264_2000kb.mp4" type="video/mp4">
           <source src="http://grandtour.myswitzerland.com/en/video/150330_Intro_original_totalVidCon_libtheora_2500kb.ogg" type="video/ogg">
-        </video> -->
+        </video>
       </div>
       <div class="landing-page">
         <div class="loading" :class="{fadeOut: loading}">
@@ -39,7 +43,7 @@
           </div>
           <img src="../assets/images/grandtour_logo.png" alt="">
         </div>
-        <div class="content-body" :class="{fadeIn: loading}">
+        <div class="loading-body" :class="{fadeIn: loading}">
           <div id="groundtour-logo">
             <img src="../assets/images/grandtour_logo.png" alt="">
           </div>
@@ -50,16 +54,12 @@
           </div>
         </div>
       </div>
-      <div id="intro">
+      <div id="intro" class="introfadeIn">
         <div class="content-header">
           <h1>Where would you like to start?</h1>
-          <ul class="clearfix">
-            <li><a href="#" class="active">Map</a></li>
-            <li><a href="#">Index</a></li>
-          </ul>
         </div>
         <div class="content-body">
-          <div id="index-map">
+          <div id="index-map" :class="{fadeOut2: !showMap, fadeIn2: showMap}">
             <div id="route-wrap">
               <div id="map-interactive"></div>
               <div id="map">
@@ -77,7 +77,9 @@
               <div id="route"></div>
             </div>
           </div>
-          <div id="index-list"></div>
+          <div id="index-list" :class="{fadeOut2: showMap,  fadeIn2: !showMap}">
+            Let'us Go!!!
+          </div>
         </div>
       </div>
     </div>
@@ -102,7 +104,8 @@ export default {
       defaultWidth: '1122',
       defaultHeight: '768',
       clientWidth: Number,
-      clientHeight: Number
+      clientHeight: Number,
+      showMap: true
     }
   },
   created () {
@@ -129,13 +132,14 @@ export default {
       this.loading = true
       this.isIn = true
     }, 2000)
+    // play
     // oVideo.oncanplay = () => {
     //   console.log('oncanplay')
     //   this.loading = true
     //   this.isIn = true
     //   setTimeout(() => {
     //     oVideo.play()
-    //   }, 2100)
+    //   }, 3000)
     // }
     // that.clientHeight = `${document.documentElement.clientHeight}px`
     // that.clientWidth = `${document.documentElement.clientWidth}px`

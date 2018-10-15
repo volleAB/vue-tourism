@@ -116,6 +116,36 @@ body {
   }
 }
 
+.switch {
+  opacity: 0;
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  margin: 120px 0 0 -84px;
+  z-index: 2;
+  li {
+    float: left;
+    vertical-align: baseline;
+    a {
+      display: inline-block;
+      width: 40px;
+      height: 16px;
+      padding: 6px 12px;
+      border: 2px solid rgba(255,255,255,0);
+      border-radius: 20px;
+      margin: 10px 10px;
+      color: rgba(255,255,255,.4);
+      &:hover {
+        color: #FFF;
+      }
+    }
+    .active {
+      border: 2px solid rgba(255,255,255,.4);
+      color: #FFF;
+    }
+  }
+}
+
 .show {
   width: 0 !important;
  }
@@ -179,10 +209,11 @@ body {
     width: 100%;
     height: 100%;
     text-align: center;
-    .content-body {
+    .loading-body {
       position: absolute;
-      top: 150px;
+      top: 100px;
       width: 100%;
+      height: 43.625em;
       margin: 0 auto;
       opacity: 0;
       #groundtour-logo {
@@ -232,6 +263,7 @@ body {
     }
   }
   #intro {
+    opacity: 0;
     position: absolute;
     top: 0;
     width: 100%;
@@ -246,93 +278,73 @@ body {
           font-weight: 200;
           letter-spacing: 1px;
         }
-        ul {
-          position: relative;
-          left: 50%;
-          margin-left: -84px;
-          li {
-            float: left;
-            vertical-align: baseline;
-            a {
-              display: inline-block;
-              width: 40px;
-              height: 16px;
-              padding: 6px 12px;
-              border: 2px solid rgba(255,255,255,0);
-              border-radius: 20px;
-              margin: 10px 10px;
-              color: rgba(255,255,255,.4);
-              &:hover {
-                color: #FFF;
-              }
-            }
-            .active {
-              border: 2px solid rgba(255,255,255,.4);
-              color: #FFF;
-            }
-          }
-        }
     }
     .content-body {
-      position: relative;
       width: 62.375em;
       height: 43.625em;
       margin: 0 auto;
-      #route-wrap {
-        position: relative;
-        left: 20px;
-        width: 62.375em;
-        height: 43.625em;
-        #map-interactive {
-          position: absolute;
-        }
-        #map {
-          position: absolute;
-          bottom: 54px;
-          .ill {
+      #index-map {
+        position: absolute;
+        top: 120px;
+        #route-wrap {
+          position: relative;
+          width: 62.375em;
+          height: 43.625em;
+          #map-interactive {
             position: absolute;
           }
-          #illu-schaffausen {
-            top: 100px;
-            left: 460px;
-          }
-          #illu-stmoritz {
-            top: 242px;
-            left: 660px;
-          }
-          #illu-neuchatel {
-            top: 160px;
-            left: 100px;
-          }
-          #illu-lugano {
-            top: 394px;
-            left: 540px;
-          }
-          #illu-heidi {
-            top: 230px;
-            left: 520px;
-          }
-          #illu-zermatt {
-            top: 400px;
-            left: 220px;
-          }
-          #illu-grape {
-            top: 280px;
-            left: 136px;
-          }
-          #illu-luzern {
-            top: 230px;
-            left: 330px;
-          }
-          #illu-bern {
-            top: 164px;
-            left: 210px;
-          }
-          >img {
-            width: 100%;
-            height: 100%;
+          #map {
+            position: absolute;
+            .ill {
+              position: absolute;
+            }
+            #illu-schaffausen {
+              top: 100px;
+              left: 460px;
+            }
+            #illu-stmoritz {
+              top: 242px;
+              left: 660px;
+            }
+            #illu-neuchatel {
+              top: 160px;
+              left: 100px;
+            }
+            #illu-lugano {
+              top: 394px;
+              left: 540px;
+            }
+            #illu-heidi {
+              top: 230px;
+              left: 520px;
+            }
+            #illu-zermatt {
+              top: 400px;
+              left: 220px;
+            }
+            #illu-grape {
+              top: 280px;
+              left: 136px;
+            }
+            #illu-luzern {
+              top: 230px;
+              left: 330px;
+            }
+            #illu-bern {
+              top: 164px;
+              left: 210px;
+            }
+            >img {
+              width: 100%;
+              height: 100%;
+            }
           }
         }
+      }
+      #index-list {
+        position: absolute;
+        top: 80px;
+        opacity: 0;
       }
     }
   }
@@ -361,8 +373,23 @@ body {
   animation: fadeIn 6.2s 3.8s ease-in-out 1 !important;
 }
 
+.fadeOut2 {
+  animation: fadeOut 1s 1s ease 1;
+  animation-fill-mode: forwards !important;
+}
+
+.fadeIn2 {
+  animation: tabBarfadeIn 2s 2s ease-in-out 1;
+  animation-fill-mode: forwards !important;
+}
+
 .topBarfadeIn {
   animation: tabBarfadeIn 1s 9.8s ease-in-out 1 !important;
+  animation-fill-mode: forwards !important;
+}
+
+.introfadeIn {
+  animation: tabBarfadeIn 1s 13s ease-in-out 1 !important;
   animation-fill-mode: forwards !important;
 }
 
