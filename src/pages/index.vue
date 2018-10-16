@@ -2,8 +2,8 @@
   <div class="index">
     <comTopBar :isIn="isIn"></comTopBar>
     <ul class="switch clearfix introfadeIn">
-      <li><a href="#" :class="{active: showMap}" @click="showMap = true">Map</a></li>
-      <li><a href="#" :class="{active: !showMap}" @click="showMap = false">Index</a></li>
+      <li><a href="#" :class="{active: showMap}" @click="showYouWant" data-switch='map'>Map</a></li>
+      <li><a href="#" :class="{active: !showMap}" @click="showYouWant"  data-switch='index'>Index</a></li>
     </ul>
     <div id="logo-myswitzerland">
       <a href="https://www.myswitzerland.com/zh-cn/grand-tour-of-switzerland.html"></a>
@@ -54,12 +54,12 @@
           </div>
         </div>
       </div>
-      <div id="intro" class="introfadeIn">
+      <div id="intro" class="introfadeIn" :class="{indexBg: showOut}">
         <div class="content-header">
           <h1>Where would you like to start?</h1>
         </div>
         <div class="content-body">
-          <div id="index-map" :class="{fadeOut2: !showMap, fadeIn2: showMap}">
+          <div id="index-map" :class="{fadeOut2: !showMap, fadeIn2: showMap, out: showOut, in: !showOut}">
             <div id="route-wrap">
               <div id="map-interactive"></div>
               <div id="map">
@@ -74,10 +74,12 @@
                 <div id="illu-bern" class="ill" style="opacity: 0.6;"><img src="../assets/images/illu_bern.png" alt="illu bern"></div>
                 <img src="../assets/images/swiss_map.png" alt="swiss map" id="swiss-map">
               </div>
-              <div id="route"></div>
+              <div id="route">
+                <mapRoute class="maproute"></mapRoute>
+              </div>
             </div>
           </div>
-          <div id="index-list" :class="{fadeOut2: showMap,  fadeIn2: !showMap}">
+          <div id="index-list" :class="{fadeOut2: showMap,  fadeIn2: !showMap, out: !showOut, in: showOut}">
             Let'us Go!!!
           </div>
         </div>
@@ -90,12 +92,14 @@
 <script>
 import comTopBar from '../components/topBar'
 import comFooter from '../components/footer'
+import mapRoute from '../components/mapRoute'
 import { createLoading } from '../plugins/loading.js'
 
 export default {
   components: {
     comTopBar,
-    comFooter
+    comFooter,
+    mapRoute
   },
   data () {
     return {
@@ -105,7 +109,9 @@ export default {
       defaultHeight: '768',
       clientWidth: Number,
       clientHeight: Number,
-      showMap: true
+      showMap: true,
+      showOut: false,
+      mapFlag: false
     }
   },
   created () {
@@ -125,13 +131,12 @@ export default {
     }
     createLoading(options)
     let oVideo = document.querySelector('#bg-video')
-    // oVideo.loadstart = () => {
-    //   console.log('loadstart')
-    // }
+
     setTimeout(() => {
       this.loading = true
       this.isIn = true
     }, 2000)
+
     // play
     // oVideo.oncanplay = () => {
     //   console.log('oncanplay')
@@ -141,8 +146,7 @@ export default {
     //     oVideo.play()
     //   }, 3000)
     // }
-    // that.clientHeight = `${document.documentElement.clientHeight}px`
-    // that.clientWidth = `${document.documentElement.clientWidth}px`
+
     this.clientWidth = document.documentElement.clientWidth
     this.clientHeight = document.documentElement.clientHeight
     if (this.clientWidth <= this.defaultWidth) {
@@ -173,6 +177,24 @@ export default {
       }
     }
   },
-  methods: {}
+  methods: {
+    showYouWant (event) {
+      if (event.target.dataset.switch === 'map') {
+        this.showMap = true
+        setTimeout(() => {
+          this.showOut = false
+        }, 800)
+      } else {
+        this.showMap = false
+        setTimeout(() => {
+          this.showOut = true
+        }, 800)
+      }
+    },
+    onMap () {
+      this.mapFlag = !this.mapFlag
+      console.log(this.mapFlag)
+    }
+  }
 }
 </script>
